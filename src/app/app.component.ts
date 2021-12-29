@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms'
 import { Observable } from 'rxjs';
+import { debounceTime } from 'rxjs/operators';
 import { ServService } from './app.service';
 
 @Component({
@@ -31,10 +32,16 @@ export class AppComponent {
     });
   
 
-    this.form.get('truck_reg').valueChanges.subscribe(response =>{
+    this.form.get('truck_reg').valueChanges.pipe(debounceTime(200))
+    .subscribe(response =>{
+     if(response && response.length){
       console.log(response);
       
       this.filterData(response);
+     }
+     else{
+       this.options=[];
+     }
 
     })
   }
@@ -47,7 +54,7 @@ export class AppComponent {
 getNames(){
   this.service.getData().subscribe(response =>{
     this.filteredOptions= response;
-    this.options= response;
+    // this.options= response;
    
   });
 }
