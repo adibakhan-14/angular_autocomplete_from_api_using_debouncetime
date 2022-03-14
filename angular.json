@@ -123,5 +123,8 @@
       }
     }
   },
-  "defaultProject": "autocomplete"
+  "defaultProject": "autocomplete",
+  "cli": {
+    "analytics": "d093b2d0-8c4b-4e20-be30-0f516c88c6a0"
+  }
 }

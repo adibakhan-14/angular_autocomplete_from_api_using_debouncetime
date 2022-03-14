@@ -20,7 +20,7 @@ export class ServService {
   // }
 
   getData():Observable<any[]>{
-    return this.http.get<any>('http://localhost:3000/status?status=returned')
+    return this.http.get<any>('https://api.truckload.trukiot.com/v3/status?status=returned')
       .pipe(
         map((response) => response.data.map(item => item['truck_reg']))
       )

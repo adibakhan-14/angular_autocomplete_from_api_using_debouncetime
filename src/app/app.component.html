@@ -4,7 +4,20 @@
             <mat-label>
                 Truck Registration
             </mat-label>
-            <input formControlName="truck_reg" matInput type="text" [matAutocomplete]="auto" />
+            <input formControlName="truck_reg" matInput type="text" [matAutocomplete]="auto" (optionSelected)="onSelectRegistrationNumber()" />
+            <mat-autocomplete #auto="matAutocomplete">
+                <mat-option *ngFor="let item of options" [value]="item">
+                    {{item}}
+                </mat-option>
+            </mat-autocomplete>
+        </mat-form-field>
+        <br>
+
+        <mat-form-field>
+            <mat-label>
+                Truck Registration 2
+            </mat-label>
+            <input formControlName="truck_reg2" matInput type="text" [matAutocomplete]="auto" (optionSelected)="onSelectRegistrationNumber()" />
             <mat-autocomplete #auto="matAutocomplete">
                 <mat-option *ngFor="let item of options" [value]="item">
                     {{item}}
